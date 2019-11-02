@@ -11,72 +11,37 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.Buttons.MenuButton;
 import com.mygdx.game.Clicker;
+import com.mygdx.game.ScreenManager;
 
-public class OptionScreen implements Screen {
+public class OptionScreen extends ScreenParent {
 
-    Stage stage;
-    Table table;
-    Sprite sprite;
     MenuButton start;
     Game game;
-    SpriteBatch batch;
-
+    Table table;
 
     public OptionScreen(Game aGame){
-        game = aGame;
+
+        super(aGame);
         table = new Table();
-        stage = new Stage();
-
-
 
         start = new MenuButton("Start"){
             @Override
             public void onClick(){
-                Clicker.screenManager.ChangeScreen("Tittle");
+                ScreenManager.ChangeScreen("Tittle");
             }
         };
 
         table.add(start);
         table.setPosition(100,100);
         stage.addActor(table);
-        //stage.huy();
     }
 
     @Override
-    public void show() {
-        Gdx.input.setInputProcessor(stage);
-    }
-
-    @Override
-    public void render(float delta) {
+    void update(){
         Gdx.gl.glClearColor(0, 0, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         stage.act();
         stage.draw();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
     }
 }

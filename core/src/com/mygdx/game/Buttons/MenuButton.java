@@ -43,7 +43,6 @@ public class MenuButton extends ImageTextButton {
         imageTextButtonStyle.pressedOffsetY = -1;
         imageTextButtonStyle.font = menuFont;
 
-
         addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){

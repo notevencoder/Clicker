@@ -13,11 +13,19 @@ public class Clicker extends Game {
 	public static ScreenManager screenManager;
 
 	public static Skin gameSkin;
+	private final int width, height;
+
+	public Clicker(int width, int height){
+		this.width = width;
+		this.height = height;
+	}
+
 	@Override
 	public void create () {
 		gameSkin  = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
-		screenManager = new ScreenManager(this);
-		screenManager.ChangeScreen("Tittle");
+		new ScreenManager(this, width, height);
+		ScreenManager.ChangeScreen("Tittle");
+
 		this.setScreen(screenManager.getScreen());
 	}
 
